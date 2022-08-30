@@ -232,8 +232,8 @@
                 "s3:List*"
               ],
               "Resource": [
-                { "Fn::Join" : ["", [ "arn:aws:s3:::user30-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"} ]] },
-                { "Fn::Join" : ["", [ "arn:aws:s3:::user30-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"}, "/*" ]] },
+                { "Fn::Join" : ["", [ "arn:aws:s3:::user07-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"} ]] },
+                { "Fn::Join" : ["", [ "arn:aws:s3:::user07-cicd-workshop-", { "Ref": "AWS::Region" } , "-", {"Ref" : "AWS::AccountId"}, "/*" ]] },
                 { "Fn::Join" : ["", [ "arn:aws:s3:::codepipeline-", "*" ]] }
 
               ]
@@ -276,8 +276,8 @@
     "ImportedKeyPair": {
         "Type": "AWS::EC2::KeyPair",
         "Properties": {
-            "KeyName": "user40-key",
-            "PublicKeyMaterial": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXdhNp/71cdfrbzQj5yLG5K8DBKh5WqMJuzYbm9B46yuh90lkNpKkwEp2AFOlacK5LDBXfjLsd34/FuMD2BvRzUZ2IGd3+UZQzzXgmxFwYE/jMgyvdyesq+a0S5UNADYJgrqmyhlS0tATFogDAfmee3FDJjDcGZTbRQR2i50ZC3SXQv7R5YWBgHjDABWohEtVzjAJi7dk4Y8dAIeXZD2PlRDJmDVRRY3+T3r+/y/e/CdcwqiAUk/p1zpJpjh6V7HbPipuOcaWgf6M9bTHz59Qkgc5XmRUCGFTBgW7TwEHDx5ReQkkh+JLffpDNbgJAJp8LlnQZe8BtxpGszWmNx9FP ec2-user@ip-172-31-49-234.ap-northeast-2.compute.internal"
+            "KeyName": "user07-key",
+            "PublicKeyMaterial": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCY6ubS6bAoTf5D72phc8sCXpOq402gRpw2y60WLXVhm8JS5ycyeDFEiptPR1vlDJVQOu4LcyMOdEzKud2bj7felAME9mzeY1gOjz2wbqH4PXaEulNKnIF8nPZLQVy0D3BBvZuaO4nSONlbH35uHMD1bG+n/rdPo/GVqD8kblaEpsLseYN2plmcsna9CSgKN3l/AU8IZhhWIYwykoVwD0TeAhmLDDOrJ0HJW8NFHY1DF7/SlaJpWzVqxEg7qzMQN/Ea6MupU9PPmruWIYTHT8Wl0tJ541x6VbMr7TSgh1Db4syzXCKnBvswIruPjQ/PdXzezfp4flYHuj0LKSRDX3X ec2-user@ip-172-31-56-6.ap-northeast-2.compute.internal"
         }
     },
     "DevWebApp01" : {
@@ -300,7 +300,7 @@
                 "yum install -y aws-cli\n",
                 "yum install -y git\n",
                 "cd /home/ec2-user/\n",
-                "wget https://aws-codedeploy-ap-northeast-2.s3.ap-northeast-2.amazonaws.com/latest/install\n",
+                "wget https://aws-codedeploy-ap-northeast-3.s3.ap-northeast-3.amazonaws.com/latest/install\n",
                 "chmod +x ./install\n",
                 "sudo ./install auto\n",
                 "service codedeploy-agent start\n",
@@ -310,7 +310,7 @@
           }
         },
         "Tags" : [
-          {"Key" : "Name", "Value" : "user30-DevWebApp01" }
+          {"Key" : "Name", "Value" : "user07-DevWebApp01" }
         ]
       }
     },
@@ -344,7 +344,7 @@
           }
         },
         "Tags" : [
-          {"Key" : "Name", "Value" : "user30-ProdWebApp01" }
+          {"Key" : "Name", "Value" : "user07-ProdWebApp01" }
         ]
       }
     }
@@ -356,13 +356,13 @@
 
     "DevPublicDNS" : {
       "Value" : { "Fn::Join" : ["",["http://",{ "Fn::GetAtt" : [ "DevWebApp01", "PublicDnsName" ] }]]},
-      "Description" : "user30-DevWebApp01 Public DNS Name"
+      "Description" : "user07-DevWebApp01 Public DNS Name"
     },
 
 
     "ProdPublicDNS" : {
       "Value" : { "Fn::Join" : ["",["http://",{ "Fn::GetAtt" : [ "ProdWebApp01", "PublicDnsName" ] }]]},
-      "Description" : "user30-ProdWebApp01 Public DNS Name"
+      "Description" : "user07-ProdWebApp01 Public DNS Name"
     }
 
   }
